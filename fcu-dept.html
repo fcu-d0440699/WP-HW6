@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var colleges = {
+"商學院":["會計系", "統計系", "經濟系"],
+"工學院":["化工系", "航太系", "機械系"],
+"建設學院":["土木工程學系", "水利工程與資源保育學系", "都市計畫與空間資訊學系"],
+"資電學院":["資訊工程學系", "電機工程學系", " 電子工程學系"],
+};
+$( document ).ready(function() {
+  	innerHTML = "";
+	for (var key in colleges)
+	{
+	innerHTML +=  "<option value="+key+">"+key+"</option>";
+	}
+	$("#CollegeSelect").html(innerHTML);
+	onchangeCollege();
+	$("#CollegeSelect").click(function() {onchangeCollege()});
+});
+function onchangeCollege()
+{
+	var value = $("#CollegeSelect").val() ;	
+	
+	innerHTML = "";
+	departments = colleges[value];
+	for	(var i =0;i<departments.length;i++)
+	{
+	innerHTML +=  "<option value="+departments[i]+">"+departments[i]+"</option>";
+	}
+	document.getElementById('DepartmentSelect').innerHTML =innerHTML;
+}
+</script>
+
+
+</head>
+<body>
+<p>請選擇學院</p>
+<p><select id="CollegeSelect"></select></p>
+<p>請選擇系所</p>
+<p><select id="DepartmentSelect"></select></p>
+</body>
+</html>
